@@ -1,4 +1,19 @@
-const eqArrays = (arr1, arr2) =>  JSON.stringify(arr1) === JSON.stringify(arr2) ? true : false;
+const eqArrays = (arr1, arr2) => {
+
+  let result = false;
+
+  if (arr1.length === arr2.length) {
+
+    for (let i = 0; i < arr1.length; i++) {
+
+      if (arr1[i] === arr2[i]) result = true;
+      
+      else return false;
+    }
+  }
+  return result;
+};
+
 
 
 const eqObjects = (object1, object2) => {
@@ -11,6 +26,7 @@ const eqObjects = (object1, object2) => {
   if (obj1.length !== obj2.length) {
 
     result = false;
+
   } else {
 
     for (const key in object1) {
@@ -19,14 +35,10 @@ const eqObjects = (object1, object2) => {
         
         result = eqArrays(object1[key], object2[key]);
 
-      } else if (object1[key] === object2[key]) {
+      } else if (object1[key] === object2[key]) result = true;
 
-        result = true;
-
-      } else {
-
-        result = false;
-      }
+      else  result = false;
+        
     }
   }
   return result;
@@ -36,10 +48,14 @@ const eqObjects = (object1, object2) => {
 const assertObjectsEqual = function(actual, expected) {
   // Implement me!
   const inspect = require('util').inspect;
+
   console.log(
+
     eqObjects(actual, expected) ?
-    `👍👍👍 Assertion Passed: ${inspect(actual)} === ${inspect(expected)}` : 
-    `😡😡😡 Assertion Failed: ${inspect(actual)} === ${inspect(expected)}`);
+
+      `👍👍👍 Assertion Passed: ${inspect(actual)} === ${inspect(expected)}` :
+
+      `😡😡😡 Assertion Failed: ${inspect(actual)} === ${inspect(expected)}`);
 
 };
 
