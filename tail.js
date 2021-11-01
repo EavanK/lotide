@@ -7,16 +7,29 @@ const assertEqual = function(actual, expected) {
 };
 
 const tail = (array) => {
-  return array.slice(1);
+
+  return (array.length === 0 && array.length === 1) ? [] : array.slice(1);
+  
 };
 
 const result = tail(['Hello', 'Lighthouse', 'Labs']);
 assertEqual(result, ['Lighthouse', 'Labs']); // will always fail!
 
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words);
-assertEqual(words.length, 3);
-assertEqual(tail(words), ['Lighthouse', 'Labs']);
 
-assertEqual("Lighthouse Labs", "Bootcamp");
-assertEqual(1, 1);
+const words = ["Yo Yo", "Lighthouse", "Labs"];
+
+
+assertEqual(words.length, 3);
+
+//[1, 2, 3] === [1, 2, 3] // => false
+//[1, 2, 3] == [1, 2, 3] // => false
+assertEqual(tail(words), ['Lighthouse', 'Labs']);// will be failed.
+
+
+//An array with only one element should yield an empty array for its tail
+const myName = ['Hyunsu'];
+assertEqual(tail(myName), ['Hyunsu']);
+
+// An empty array should yield an empty array for its tail
+const empty = [];
+assertEqual(tail(empty), []);
