@@ -6,13 +6,29 @@ const assertEqual = function(actual, expected) {
   }
 };
 
-const eqArrays = (arr1, arr2) =>  assertEqual(JSON.stringify(arr1) === JSON.stringify(arr2), true);
+const eqArrays = (arr1, arr2) => {
 
-assertEqual("Lighthouse Labs", "Bootcamp");
-assertEqual(1, 1);
+  let result = false;
 
-eqArrays([1, 2, 3], [1, 2, 3]); // => true
-eqArrays([1, 2, 3], [3, 2, 1]); // => false
+  if (arr1.length === arr2.length) {
 
-eqArrays(["1", "2", "3"], ["1", "2", "3"]); // => true
-eqArrays(["1", "2", "3"], ["1", "2", 3]); // => false
+    for (let i = 0; i < arr1.length; i++) {
+
+      if (arr1[i] === arr2[i]) result = true;
+      
+      else return false;
+    }
+  }
+  return result;
+};
+
+
+
+assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => false
+
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => true
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => false
+
+assertEqual(eqArrays([1, '2', 3], [1, 2, 3]), false);
+assertEqual(eqArrays([1, 2, 3], ['1', 2, 3]), false);
