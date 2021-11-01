@@ -1,12 +1,14 @@
 const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`👍👍👍 Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`😡😡😡 Assertion Failed: ${actual} !== ${expected}`);
-  }
+
+  console.log((actual === expected) ?
+    `👍👍👍 Assertion Passed: ${actual} === ${expected}` :
+ 
+    `😡😡😡 Assertion Failed: ${actual} !== ${expected}`);
+  
 };
 
 const countLetters = string => {
+
   const results = {};
 
   for (const count of string) {
@@ -20,6 +22,6 @@ const countLetters = string => {
 
 assertEqual(countLetters('LHL')['L'], 2);
 assertEqual(countLetters("lighthouse in the house")['h'], 4);
-assertEqual(countLetters("lighthouse in the house")[' '], 3);
+assertEqual(countLetters("lighthouse in the house")[' '], 3); // false we only count letters
 assertEqual(countLetters("lighthouse in the house 1 2 3")['3'], 1);
-assertEqual(countLetters("lighthouse in the house 1 2 3")['5'], 1);
+assertEqual(countLetters("lighthouse in the house 1 2 3")['5'], 1); // false
