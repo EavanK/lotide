@@ -15,9 +15,6 @@ const middle = arr => {
       i = Math.floor(i / 2);
       result.push(arr[i], arr[i + 1]);
     }
-  } else {
-    
-    return '[]';
   }
   return result;
 };
