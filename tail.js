@@ -1,6 +1,6 @@
 const tail = (array) => {
 
-  let result = '[]';
+  let result = [];
 
   if (array.length !== 0 && array.length !== 1)
 
