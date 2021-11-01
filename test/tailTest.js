@@ -1,31 +1,40 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const tail = require('../tail.js');
 
 
-const result = tail(['Hello', 'Lighthouse', 'Labs']);
+describe('#tail', () => {
 
-assertEqual(result, ['Lighthouse', 'Labs']); // will always fail!
-assertEqual(result.length, 2);
-assertEqual(result[0], "Lighthouse");
-assertEqual(result[1], 'Labs');
+  
+  it('returns [Labs] for [Hello, Lighthouse, Labs]', () => {
 
+    const result = tail(['Hello', 'Lighthouse', 'Labs']);
+    
+    assert.deepEqual(tail(result), ['Labs']);
 
-
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-
-tail(words);
-assertEqual(words.length, 3);
-assertEqual(tail(words).length, 2);
-assertEqual(tail(words)[0], 'Lighthouse');
-assertEqual(tail(words)[1], 'Labs');
-assertEqual(tail(words)[2], undefined);
+  });
 
 
-//An array with only one element should yield an empty array for its tail
-const myName = ['Hyunsu'];
-assertEqual(tail(myName), '[]');
+  it('returns ["Labs"] for  ["Yo Yo", "Lighthouse", "Labs"]', () => {
+
+    const words = ["Yo Yo", "Lighthouse", "Labs"];
+
+    assert.deepEqual(tail(words), ["Lighthouse", "Labs"]);
+  });
 
 
-// An empty array should yield an empty array for its tail
-const empty = [];
-assertEqual(tail(empty), '[]');
+  it('returns [] for  ["Hyunsu"]', () => {
+
+    const myName = ['Hyunsu'];
+
+    assert.deepEqual(tail(myName), []);
+  });
+
+
+  it('returns [] for  []', () => {
+
+    const empty = [];
+
+    assert.deepEqual(tail(empty), []);
+  });
+
+});
