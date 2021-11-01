@@ -1,12 +1,28 @@
-const assertEqual = function (actual, expected) {
-  if (actual === expected) {
-    console.log(`👍👍👍 Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`😡😡😡 Assertion Failed: ${actual} !== ${expected}`);
-  }
+const assertEqual = function(actual, expected) {
+
+  console.log((actual === expected) ?
+    `👍👍👍 Assertion Passed: ${actual} === ${expected}` :
+ 
+    `😡😡😡 Assertion Failed: ${actual} !== ${expected}`);
+  
 };
 
-const eqArrays = (arr1, arr2) =>  JSON.stringify(arr1) === JSON.stringify(arr2) ? true : false;
+
+const eqArrays = (arr1, arr2) => {
+
+  let result = false;
+
+  if (arr1.length === arr2.length) {
+
+    for (let i = 0; i < arr1.length; i++) {
+
+      if (arr1[i] === arr2[i]) result = true;
+      
+      else return false;
+    }
+  }
+  return result;
+};
 
 
 const eqObjects = (object1, object2) => {
@@ -19,6 +35,7 @@ const eqObjects = (object1, object2) => {
   if (obj1.length !== obj2.length) {
 
     result = false;
+
   } else {
 
     for (const key in object1) {
@@ -27,14 +44,10 @@ const eqObjects = (object1, object2) => {
         
         result = eqArrays(object1[key], object2[key]);
 
-      } else if (object1[key] === object2[key]) {
+      } else if (object1[key] === object2[key]) result = true;
 
-        result = true;
-
-      } else {
-
-        result = false;
-      }  
+      else  result = false;
+        
     }
   }
   return result;
@@ -57,4 +70,4 @@ assertEqual(eqObjects(cd, cd2), false); // => false
 
 const aa = { a: [1, 2, 3], b: [1, 3, 5] };
 const bb = { b: [1, 3, 5], a: [1, 2, 3] };
-assertEqual(eqObjects(aa, bb), true);
+assertEqual(eqObjects(aa, bb), true); // => true
