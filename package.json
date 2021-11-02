@@ -1,0 +1,30 @@
+{
+  "name": "@eavank/lotide",
+  "version": "1.0.0",
+  "description": "Project name lotide at Lighthouse Labs",
+  "main": "assertArraysEqual.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EavanK/lotide.git"
+  },
+  "author": {
+    "name" : "Hyunsu Kim",
+    "email" : "ksoksl0711@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EavanK/lotide/issues",
+    "email": "ksoksl0711@gmail.com"
+  },
+  "homepage": "https://github.com/EavanK/lotide#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3"
+  }
+}
