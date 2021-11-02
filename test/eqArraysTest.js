@@ -1,13 +1,41 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const eqArrays = require('../eqArrays');
 
 
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => false
+describe('#equal arrays', () => {
 
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => true
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => false
+  it('return true if given arrays are equal', () => {
 
-assertEqual(eqArrays([1, '2', 3], [1, 2, 3]), false);
+    assert.isTrue(eqArrays([1, 2, 3], [1, 2, 3]));
+  });
 
-assertEqual(eqArrays([1, 2, 3], ['1', 2, 3]), false);
+
+  it('return false if given arrays are not equal', () => {
+
+    assert.isFalse(eqArrays([1, 2, 3], [3, 2, 1]));
+  });
+
+
+  it('return true if given arrays are equal', () => {
+
+    assert.isTrue(eqArrays(["1", "2", "3"], ["1", "2", "3"]));
+  });
+
+
+  it('return false if given arrays are not equal', () => {
+
+    assert.isFalse(eqArrays(["1", "2", "3"], ["1", "2", 3]));
+  });
+
+
+  it('return false if given arrays are not equal', () => {
+
+    assert.isFalse(eqArrays([1, '2', 3], [1, 2, 3]));
+  });
+
+
+  it('return false if given arrays are not equal', () => {
+
+    assert.isFalse(eqArrays([1, 2, 3], ['1', 2, 3]));
+  });
+});
