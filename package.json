@@ -1,8 +1,8 @@
 {
   "name": "@eavank/lotide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Project name lotide at Lighthouse Labs",
-  "main": "assertArraysEqual.js",
+  "main": "head.js",
   "directories": {
     "test": "test"
   },
